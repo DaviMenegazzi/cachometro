@@ -4,9 +4,13 @@
   "main": "index.ts",
   "dependencies": {
     "expo": "~57.0.24",
+    "expo-camera": "~57.0.5",
+    "expo-haptics": "~57.0.3",
+    "expo-media-library": "~57.0.5",
     "expo-status-bar": "~57.0.1",
     "react": "19.2.3",
-    "react-native": "0.86.3"
+    "react-native": "0.86.3",
+    "react-native-svg": "15.15.4"
   },
   "devDependencies": {
     "@types/react": "~19.2.2",

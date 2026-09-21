@@ -1,13 +1,17 @@
 {
   "expo": {
     "name": "Cachometro",
-    "slug": "Cachometro",
+    "slug": "cachometro",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": false,
+      "infoPlist": {
+        "NSCameraUsageDescription": "O Cachômetro usa a câmera para você compartilhar momentos com uma única pessoa.",
+        "NSPhotoLibraryAddUsageDescription": "Permite salvar na galeria as fotos que você tirar no Cachômetro."
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -20,6 +24,18 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      "expo-status-bar",
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Permita que o Cachômetro use a câmera para registrar seus momentos.",
+          "recordAudioAndroid": false,
+          "barcodeScannerEnabled": false
+        }
+      ],
+      ["expo-media-library", { "photosPermission": "Permita acesso às fotos.", "savePhotosPermission": "Permita salvar esta foto na sua galeria." }]
+    ]
   }
 }
