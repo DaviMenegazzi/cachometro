@@ -35,7 +35,23 @@
           "barcodeScannerEnabled": false
         }
       ],
-      ["expo-media-library", { "photosPermission": "Permita acesso às fotos.", "savePhotosPermission": "Permita salvar esta foto na sua galeria." }]
+      [
+        "expo-media-library",
+        {
+          "photosPermission": "Permita acesso às fotos.",
+          "savePhotosPermission": "Permita salvar esta foto na sua galeria."
+        }
+      ],
+      "expo-secure-store",
+      "expo-image",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Permita escolher imagens da galeria para criar stickers.",
+          "cameraPermission": false,
+          "microphonePermission": false
+        }
+      ]
     ]
   }
 }

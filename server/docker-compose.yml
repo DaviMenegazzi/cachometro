@@ -1,0 +1,44 @@
+# Projeto isolado: rede, volume e limites próprios. Não toca em nada dos outros serviços da VPS.
+name: cachometro
+services:
+  api:
+    build: .
+    container_name: cachometro-api
+    restart: unless-stopped
+    ports:
+      - "8787:8787"
+    volumes:
+      - data:/data
+    environment:
+      CUTOUT_URL: http://cutout:7000/
+    networks: [cachometro]
+    read_only: true
+    tmpfs: [/tmp]
+    security_opt: [no-new-privileges:true]
+    cap_drop: [ALL]
+    mem_limit: 256m
+    cpus: 0.5
+    pids_limit: 100
+    logging:
+      driver: json-file
+      options: { max-size: "5m", max-file: "2" }
+  # Recorte de fundo dos stickers. Sem porta publicada: só a API alcança, pela rede interna.
+  cutout:
+    build: ./cutout
+    container_name: cachometro-cutout
+    restart: unless-stopped
+    networks: [cachometro]
+    read_only: true
+    tmpfs: [/tmp]
+    security_opt: [no-new-privileges:true]
+    cap_drop: [ALL]
+    mem_limit: 512m
+    cpus: 0.5
+    pids_limit: 50
+    logging:
+      driver: json-file
+      options: { max-size: "2m", max-file: "2" }
+volumes:
+  data:
+networks:
+  cachometro:
